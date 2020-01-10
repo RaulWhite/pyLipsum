@@ -1,18 +1,18 @@
-from chiquitoArray import chiquitoArray
+from chiquitoDict import chiquitoDict
 from random import choice, randint
 import logging
 
 logging.basicConfig(format='\n%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-def ipsum(array: list, paragraphs: int, lorem: bool):
+def ipsum(dict: classmethod, paragraphs: int, lorem: bool):
     output = "" # Variable declaration
-    if lorem: output = "Lorem fistrum" # If start is desired
+    if lorem: output = dict.start # If start is desired
     for i in range(paragraphs): # Loop for paragraphs
         numPhrases = randint(5, 10)
         for j in range(numPhrases): # Loop for phrases
             numWords = randint(4, 12)
             for k in range(numWords): # Loop for every array item selected
-                word = choice(array) # Random array item
+                word = choice(dict.array) # Random array item
                 if k == 0 and not (i == j == 0 and lorem):
                     word = word.capitalize() # Capitalize every start of phrase
                 if j == 0 and k == 0 and not (i == 0 and lorem):
@@ -25,4 +25,4 @@ def ipsum(array: list, paragraphs: int, lorem: bool):
     print(output) # Print result
 
 if __name__ == '__main__':
-    ipsum(chiquitoArray, 3, True)
+    ipsum(chiquitoDict, 3, True)
